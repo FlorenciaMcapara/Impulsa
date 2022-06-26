@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+      <style type="text/css">
+        body{
+            display: flex;        
+            place-items: center;
+            justify-content: center;
+            height: 80vh;
+            background: #111b21;
+        }
+        .loader {
+            border: 16px solid #f3f3f3;
+            /* Light grey */
+            border-top: 16px solid #f25ea3;
+            border-bottom: 16px solid #f2e313;
+            /* Dark Green */
+            border-radius: 50%;
+            width: 400px;
+            height: 400px;
+            animation: spinloader 2s linear infinite;
+           
+           
+        }
+  
+        .loader img {
+            height: 400px;
+            width: 400px;
+            animation: spinlogo 2s linear infinite;
+           
+
+        }
+  
+        @keyframes spinloader {
+            0% {
+                transform: rotate(0deg);
+            }
+  
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+  
+        @keyframes spinlogo {
+            0% {
+                transform: rotate(360deg);
+            }
+  
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+  <script>
+    const AS_URL_BASE = "https://script.google.com/a/~/macros/s/AKfycbza19CFpu7JtR9qLayZqoV9AHg4Op3WRYBZ6gWd4G-W-M-19-9YFfBYkXNB6Lf3Sy9a9g/exec";
+    
+    var url = document.location.href;
+    var k = url.substr(url.lastIndexOf("k=")+2);
+    
+    if(k){
+      fetch(AS_URL_BASE+'?k='+k)
+      .then(r => r.text())
+      .then((r) => {
+        console.log(r);
+        //document.write(r);
+        if(r){
+          document.location.replace(r);
+        }
+      })
+      .catch(err => console.log(err))
+    }
+
+  </script>
+  
+   <div class="loader">
+        <img src=
+"https://leandev.site/wp-content/uploads/2022/06/loader-impulsa.png" />
+    </div>
+  
+  
+</body>
+</html>
